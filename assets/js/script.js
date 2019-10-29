@@ -9,9 +9,10 @@
 // l’utente non può inserire due volte lo stesso numero, ma sempre numeri diversi.
 
 // variabili
-var i, check, mines, score, userNum, numRandom;
+var i, check, mines, score, userNum, numRandom, victory;
 mines = [];
-score = 0;
+score = [];
+victory = true;
 
 // generatore random 16 numeri
 while (mines.length < 16) {
@@ -31,8 +32,28 @@ while (mines.length < 16) {
 
 console.log(mines);
 
-// input numero utente
-// userNum = parseInt(prompt('Inserisci un numero da 1 a 100'));
+// input numero utente e check con numeri già inseriti e con numeri vietati
+while ((score.length < 84) && (victory === true)) {
+  userNum = parseInt(prompt('Inserisci un numero da 1 a 100'));
+  if (mines.includes(userNum)) {
+    victory = false;
+  } else if (score.includes(userNum)) {
+    alert('Hai già inserito questo numero');
+  } else {
+    score.push(userNum);
+    console.log('Sei salvo (per adesso)');
+    console.log('Punteggio parziale = ', score.length);
+  }
+}
+
+// output finale
+if (victory === false) {
+  console.log('Hai perso!');
+  console.log('Punteggio = ', score.length);
+} else {
+  console.log('Hai vinto!');
+}
+
 
 // dichiarazione functions
 function getRndInteger(min, max) {
