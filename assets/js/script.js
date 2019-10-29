@@ -14,18 +14,26 @@ mines = [];
 score = [];
 victory = true;
 
-// generatore random 16 numeri
+// generatore random 16 numeri "a mano"
+// while (mines.length < 16) {
+//   check = false;
+//   numRandom = getRndInteger(1, 100);
+//   i = 0;
+//   while ((i < 16) && (check === false)) {
+//     if (numRandom === mines[i]) {
+//       check = true;
+//     }
+//     i++;
+//   }
+//   if (check === false) {
+//     mines.push(numRandom);
+//   }
+// }
+
+// generatore random 16 numeri con includes
 while (mines.length < 16) {
-  check = false;
   numRandom = getRndInteger(1, 100);
-  i = 0;
-  while ((i < 16) && (check === false)) {
-    if (numRandom === mines[i]) {
-      check = true;
-    }
-    i++;
-  }
-  if (check === false) {
+  if (mines.includes(numRandom) === false) {
     mines.push(numRandom);
   }
 }
